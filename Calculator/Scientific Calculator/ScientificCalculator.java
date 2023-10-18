@@ -1,9 +1,4 @@
-// make a scientific calculator in java gui //
-// make the equal button functional if you can
-// make the equal button functional if you can
-// make all buttons functional if you can
-// make the sin, cos, tan, √, x^2, % buttons functional if you can
- 
+// make the (any new) buttons functional if you can
 
 import javax.swing.*;
 import java.awt.*;
@@ -67,6 +62,36 @@ public class ScientificCalculator extends JFrame implements ActionListener {
             try {
                 double result = evaluateExpression(expression);
                 display.setText(expression + " = " + String.valueOf(result));
+            } catch (Exception ex) {
+                display.setText("Invalid expression");
+            }
+        } else if (command.equals("sin") || command.equals("cos")
+                || command.equals("tan") || command.equals("√") || command.equals("x^2") || command.equals("%")) {
+            String currentExpression = display.getText();
+            double result;
+            try {
+                result = evaluateExpression(currentExpression);
+                switch (command) {
+                    case "sin":
+                        result = Math.sin(Math.toRadians(result));
+                        break;
+                    case "cos":
+                        result = Math.cos(Math.toRadians(result));
+                        break;
+                    case "tan":
+                        result = Math.tan(Math.toRadians(result));
+                        break;
+                    case "√":
+                        result = Math.sqrt(result);
+                        break;
+                    case "x^2":
+                        result = Math.pow(result, 2);
+                        break;
+                    case "%":
+                        result = result / 100;
+                        break;
+                }
+                display.setText(String.valueOf(result));
             } catch (Exception ex) {
                 display.setText("Invalid expression");
             }
