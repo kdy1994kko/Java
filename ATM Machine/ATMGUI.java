@@ -23,16 +23,19 @@ public class ATMGUI extends JFrame implements ActionListener {
         titleLabel.setFont(new Font("Arial", Font.PLAIN, 20));
         add(titleLabel, BorderLayout.NORTH);
 
-        JPanel centerPanel = new JPanel(new GridLayout(2, 2));
+        JPanel centerPanel = new JPanel(new GridLayout(3, 2));
 
-        JLabel amountLabel = new JLabel("Enter Amount:");
+        JLabel amountLabel = new JLabel("Amount:");
         amountField = new JTextField();
         JButton withdrawButton = new JButton("Withdraw");
         withdrawButton.addActionListener(this);
+        JButton depositButton = new JButton("Deposit");
+        depositButton.addActionListener(this);
 
         centerPanel.add(amountLabel);
         centerPanel.add(amountField);
         centerPanel.add(withdrawButton);
+        centerPanel.add(depositButton);
 
         messageLabel = new JLabel();
         messageLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -40,6 +43,7 @@ public class ATMGUI extends JFrame implements ActionListener {
         add(centerPanel, BorderLayout.CENTER);
         add(messageLabel, BorderLayout.SOUTH);
 
+        setPreferredSize(new Dimension(400, 400));
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
@@ -70,6 +74,23 @@ public class ATMGUI extends JFrame implements ActionListener {
             balance -= amount;
             showMessage("Withdrawal successful! New balance: $" + balance);
 
+        } else if (e.getActionCommand().equals("Deposit")) {
+            double amount;
+
+            try {
+                amount = Double.parseDouble(amountField.getText());
+            } catch (NumberFormatException ex) {
+                showMessage("Invalid amount entered!");
+                return;
+            }
+
+            if (amount <= 0) {
+                showMessage("Amount must be greater than zero!");
+                return;
+            }
+
+            balance += amount;
+            showMessage("Deposit successful! New balance: $" + balance);
         }
     }
 
