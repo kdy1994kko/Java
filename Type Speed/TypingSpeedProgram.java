@@ -1,5 +1,3 @@
-// make the screen bigger 
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -19,7 +17,7 @@ public class TypingSpeedProgram extends JFrame {
             "Praise be to the Lord my Rock, who trains my hands for war and my fingers for battle ~ Psalm 144:1-2.",
             "Even though I walk through the valley of the shadow of death, I will fear no evil, for You are with me: Your rod and Your staff comfort me ~ Psalm 23:4.",
             "Away From Me Satan, Worship the Lord your God and serve him only ~ Matthew 4:10-11.",
-            "There will be no more death, mourning, crying or pain ~ Revelation 21:4.", 
+            "There will be no more death, mourning, crying or pain ~ Revelation 21:4.",
             "I Love You Jesus."
     };
 
@@ -31,16 +29,21 @@ public class TypingSpeedProgram extends JFrame {
         // Create and configure components
         userInputField = new JTextField(20);
         userInputField.setEnabled(false);
+        userInputField.setFont(userInputField.getFont().deriveFont(20f));
 
         textArea = new JTextArea(10, 30);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
+        textArea.setFont(textArea.getFont().deriveFont(20f));
 
         resultLabel = new JLabel();
+        resultLabel.setFont(resultLabel.getFont().deriveFont(20f));
 
         startButton = new JButton("Start");
+        startButton.setFont(startButton.getFont().deriveFont(20f));
 
         timerLabel = new JLabel();
+        timerLabel.setFont(timerLabel.getFont().deriveFont(20f));
 
         // Add components to the content pane
         Container container = getContentPane();
