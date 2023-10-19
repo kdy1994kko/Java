@@ -44,6 +44,7 @@ public class TicTacToeGUI extends JFrame {
                                 gameEnded = true;
                             } else {
                                 currentPlayer = currentPlayer == 1 ? 2 : 1;
+                                messageLabel.setText("Player " + (currentPlayer == 1 ? "X" : "O") + "'s turn");
                             }
                         }
                     }
